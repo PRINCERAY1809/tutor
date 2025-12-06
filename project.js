@@ -1,50 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const testimonialForm = document.getElementById('testimonialForm');
-  const testimonialGrid = document.getElementById('testimonialGrid');
+function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("active");
+}
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbymgtCYoXQPOny1gPnIVFHUBtE9m3tTj1r-eS1Hxdy2f8VNUkTIgrTvfK4vGA07zVYhwg/exec";
 
-  // Load testimonials from localStorage
-  const loadTestimonials = () => {
-    const testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
-    testimonialGrid.innerHTML = ''; // Clear existing grid
-    testimonials.forEach(t => {
-      const card = document.createElement('div');
-      card.classList.add('test-card');
-      card.innerHTML = `<p>${t.message}</p><h4>${t.name}</h4>`;
-      testimonialGrid.appendChild(card);
-    });
-  };
-
-  // Initial load
-  loadTestimonials();
-
-  // Handle form submission
-  testimonialForm.addEventListener('submit', function(e) {
+  document.getElementById("testimonialForm").addEventListener("submit", function(e) {
     e.preventDefault();
+    const name = document.getElementById("name").value;
+    const message = document.getElementById("message").value;
 
-    const name = document.getElementById('name').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    if (name && message) {
-      // Get existing testimonials
-      const testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
-
-      // Add new testimonial
-      testimonials.push({ name, message });
-
-      // Save to localStorage
-      localStorage.setItem('testimonials', JSON.stringify(testimonials));
-
-      // Reload testimonials
-      loadTestimonials();
-
-      // Reset form
-      testimonialForm.reset();
-
-      // Scroll to the latest testimonial
-      testimonialGrid.lastChild.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    fetch(WEB_APP_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, message })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "success") alert("Saved successfully!");
+      else alert("Error: " + data.message);
+    })
+    .catch(err => console.error(err));
   });
-});
+
+
 // CONTACT FORM
 document.getElementById("contactForm").addEventListener("submit", function(e) {
   e.preventDefault();
