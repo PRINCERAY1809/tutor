@@ -7,87 +7,70 @@ body {
 }
 a { text-decoration: none; color: inherit; }
 .container { width: 92%; max-width: 1200px; margin: auto; }
-/* Navbar Base */
+/* Base Navbar */
 header {
-    width: 100%;
-    background: #fff;
-    padding: 10px 0;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  background: #fff;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
 .container {
-    width: 90%;
-    margin: auto;
+  width: 90%;
+  margin: auto;
 }
-
 .nav-area {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
 .logo {
-    font-size: 24px;
-    font-weight: 700;
+  font-size: 24px;
+  font-weight: 700;
 }
 .logo span {
-    color: #007bff;
+  color: #007bff;
 }
-
 /* Desktop Menu */
 nav ul {
-    display: flex;
-    gap: 25px;
-    list-style: none;
+  display: flex;
+  gap: 25px;
+  list-style: none;
 }
 nav ul li a {
-    text-decoration: none;
-    font-size: 16px;
-    color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
 }
-
-.btn-login {
-    background: #007bff;
-    padding: 6px 14px;
-    border-radius: 4px;
-    color: #fff !important;
-}
-
-/* Mobile Button (Hidden on Desktop) */
 .menu-btn {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    padding-left: 100px;
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
 }
 
-/* ------------------ MOBILE RESPONSIVE ------------------ */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-    nav ul {
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: #fff;
-        width: 230px;
-        padding: 20px;
-        flex-direction: column;
-        gap: 15px;
-        border-left: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
-
-        display: none; /* hidden by default */
-    }
-
-    nav ul.active {
-        display: block; /* show on click */
-    }
-
-    .menu-btn {
-        display: block;
-    }
+  nav ul {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #fff;
+    width: 230px;
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    display: none;
+  }
+  nav ul.active {
+    display: block;
+  }
+  .menu-btn {
+    display: block;
+  }
 }
 
 

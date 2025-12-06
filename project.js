@@ -1,7 +1,21 @@
-function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("active");
-}
+document.addEventListener("DOMContentLoaded", function() {
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  // Toggle menu on button click
+  menuBtn.addEventListener("click", function() {
+    mobileMenu.classList.toggle("active");
+  });
+
+  // Close menu when a link is clicked (optional)
+  const menuLinks = mobileMenu.querySelectorAll("a");
+  menuLinks.forEach(link => {
+    link.addEventListener("click", function() {
+      mobileMenu.classList.remove("active");
+    });
+  });
+});
+
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbymgtCYoXQPOny1gPnIVFHUBtE9m3tTj1r-eS1Hxdy2f8VNUkTIgrTvfK4vGA07zVYhwg/exec";
 
   document.getElementById("testimonialForm").addEventListener("submit", function(e) {
